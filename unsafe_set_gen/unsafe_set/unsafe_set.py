@@ -1,15 +1,15 @@
-from .objects import (
+from ...unsafe_set_gen.objects import (
     DynamicObstacle,
     DynamicObject,
     DynamicObstacleWithMetrics,
 )
-from .indices_of_interest import (
+from ...unsafe_set_gen.indices_of_interest import (
     calc_I1,
     calc_I2,
     calc_I3,
     unionise_indices_of_interest
 )
-from .risk_assesment import calc_dcpa_and_tcpa
+from ...unsafe_set_gen.risk_assesment import calc_dcpa_and_tcpa
 from typing import List
 from scipy.spatial import ConvexHull
 import numpy as np

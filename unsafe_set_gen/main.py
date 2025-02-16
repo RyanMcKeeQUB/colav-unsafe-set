@@ -1,4 +1,4 @@
-from unsafe_set_gen.unsafe_set import create_unsafe_set_polyshape
+from unsafe_set_gen.unsafe_set.unsafe_set import create_unsafe_set_polyshape
 from unsafe_set_gen.objects import DynamicObject, DynamicObstacle, Configuration
 
 agent_vessel = DynamicObject(
