@@ -1,15 +1,15 @@
-from ...unsafe_set_gen.objects import (
+from unsafe_set_gen.objects import (
     DynamicObstacle,
     DynamicObject,
     DynamicObstacleWithMetrics,
 )
-from ...unsafe_set_gen.indices_of_interest import (
+from unsafe_set_gen.indices_of_interest import (
     calc_I1,
     calc_I2,
     calc_I3,
     unionise_indices_of_interest
 )
-from ...unsafe_set_gen.risk_assesment import calc_dcpa_and_tcpa
+from unsafe_set_gen.risk_assesment import calc_cpa
 from typing import List
 from scipy.spatial import ConvexHull
 import numpy as np
@@ -83,7 +83,7 @@ def calc_dynamic_obstacles_tcpa_dcpa(agent_vessel, dynamic_obstacles):
 
     dynamic_obstacles_with_metrics = []
     for dynamic_obstacle in dynamic_obstacles:
-        [dcpa, tcpa] = calc_dcpa_and_tcpa(agent_vessel, dynamic_obstacle.object)
+        [dcpa, tcpa] = calc_cpa(agent_vessel, dynamic_obstacle.object)
         dynamic_obstacles_with_metrics.append(
             DynamicObstacleWithMetrics(
                 dynamic_obstacle=dynamic_obstacle, dcpa=dcpa, tcpa=tcpa

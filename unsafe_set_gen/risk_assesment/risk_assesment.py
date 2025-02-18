@@ -4,7 +4,7 @@ import math
 from typing import Tuple
 
 @staticmethod
-def cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple[float, float]:
+def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple[float, float]:
     """
         calculate DCPA and TCPA between agent and target
         CPA based on this code: https://github.com/MelihAkdag/ships_collision_risk_calculations/blob/main/DCPA_TCPA_with_Python.ipynb

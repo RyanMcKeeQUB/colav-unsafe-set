@@ -1,5 +1,8 @@
-from unsafe_set_gen.unsafe_set.unsafe_set import create_unsafe_set_polyshape
+import sys
+import os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from unsafe_set_gen.objects import DynamicObject, DynamicObstacle, Configuration
+from unsafe_set_gen.unsafe_set.unsafe_set import create_unsafe_set_polyshape
 
 agent_vessel = DynamicObject(
     configuration=Configuration(

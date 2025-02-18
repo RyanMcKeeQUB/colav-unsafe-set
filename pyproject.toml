@@ -1,7 +1,7 @@
 [project]
 name = "unsafe-set-gen"
 version = "0.1.0"
-description = ""
+description = "A custom unsafe_set generator for dynamic vessels based on COLAV: Indices of interest."
 authors = [
     {name = "Ryan",email = "r.mckee@qub.ac.uk"}
 ]
