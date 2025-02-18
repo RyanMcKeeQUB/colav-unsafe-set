@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: colav_unsafe_set_gen
-Version: 0.0.1
+Version: 0.0.2
 Summary: A custom unsafe_set generator for dynamic vessels based on COLAV: Indices of interest.
 Author-email: Ryan <r.mckee@qub.ac.uk>
 License: MIT License
@@ -25,7 +25,7 @@ License: MIT License
         OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
         SOFTWARE.
 Classifier: Programming Language :: Python :: 3
-Classifier: Operating System :: Ubuntu22.04
+Classifier: Operating System :: OS Independent
 Requires-Python: >=3.10
 Description-Content-Type: text/markdown
 License-File: LICENSE

@@ -1,6 +1,6 @@
 [project]
 name = "colav_unsafe_set_gen"
-version = "0.0.1"
+version = "0.0.4"
 description = "A custom unsafe_set generator for dynamic vessels based on COLAV: Indices of interest."
 authors = [
     {name = "Ryan",email = "r.mckee@qub.ac.uk"}
@@ -13,7 +13,7 @@ dependencies = [
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Operating System :: Ubuntu22.04",
+    "Operating System :: OS Independent",
 ]
 license = { file = "LICENSE" }
 
