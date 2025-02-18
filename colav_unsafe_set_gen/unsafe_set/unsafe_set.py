@@ -9,7 +9,7 @@ from colav_unsafe_set_gen.indices_of_interest import (
     calc_I3,
     unionise_indices_of_interest
 )
-from colav_unsafe_set_gen.risk_assesment import calc_cpa
+from colav_unsafe_set_gen.risk_assessment import calc_cpa
 from typing import List
 from scipy.spatial import ConvexHull
 import numpy as np
