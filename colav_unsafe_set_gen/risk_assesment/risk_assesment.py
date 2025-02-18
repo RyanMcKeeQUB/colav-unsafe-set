@@ -1,5 +1,5 @@
 import numpy as np
-from unsafe_set_gen.objects import DynamicObject
+from colav_unsafe_set_gen.objects import DynamicObject
 import math
 from typing import Tuple
 

@@ -1,4 +1,4 @@
-from unsafe_set_gen.objects import (
+from colav_unsafe_set_gen.objects import (
     DynamicObstacle,
     DynamicObject,
     DynamicObstacleWithMetrics,
