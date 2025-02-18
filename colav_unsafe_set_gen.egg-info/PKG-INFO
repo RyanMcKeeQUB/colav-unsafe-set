@@ -1,6 +1,6 @@
 Metadata-Version: 2.2
 Name: colav_unsafe_set_gen
-Version: 0.0.1
+Version: 0.0.2
 Summary: A custom unsafe_set generator for dynamic vessels based on COLAV: Indices of interest.
 Author-email: Ryan <r.mckee@qub.ac.uk>
 License: MIT License
