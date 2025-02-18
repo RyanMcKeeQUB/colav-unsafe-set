@@ -1,5 +1,5 @@
 [project]
-name = "unsafe-set-gen"
+name = "colav_unsafe_set_gen"
 version = "0.1.0"
 description = "A custom unsafe_set generator for dynamic vessels based on COLAV: Indices of interest."
 authors = [
