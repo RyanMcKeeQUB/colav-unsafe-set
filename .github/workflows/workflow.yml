@@ -24,7 +24,7 @@ jobs:
           python-version: "3.10"
 
       - name: Install build tools
-        run: pip install build twine
+        run: pip install build twine setuptools
 
       - name: Build unsafe_set_gen pkg
         run: python -m build
