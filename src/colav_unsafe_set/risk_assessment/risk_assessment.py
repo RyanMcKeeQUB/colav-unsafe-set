@@ -1,13 +1,15 @@
 import numpy as np
-from colav_unsafe_set_gen.objects import DynamicObject
+from colav_unsafe_set.objects import DynamicObject
 import math
 from typing import Tuple
 
-@staticmethod
-def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple[float, float]:
+
+def calc_cpa(
+    agent_object: DynamicObject, target_object: DynamicObject
+) -> Tuple[float, float]:
     """
-        calculate DCPA and TCPA between agent and target
-        CPA based on this code: https://github.com/MelihAkdag/ships_collision_risk_calculations/blob/main/DCPA_TCPA_with_Python.ipynb
+    calculate DCPA and TCPA between agent and target
+    CPA based on this code: https://github.com/MelihAkdag/ships_collision_risk_calculations/blob/main/DCPA_TCPA_with_Python.ipynb
 
     """
     # # distance between agent and targetship
@@ -27,9 +29,9 @@ def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple
     # elif (target_object.configuration.pose.position.y - agent_object.configuration.pose.position.y < 0) and (target_object.configuration.pose.position.x - agent_object.configuration.pose.position.x >= 0):
     #     delta_alpha = 2 * math.pi
     # alpha_r = math.atan2((target_object.configuration.pose.position.y - agent_object.configuration.pose.position.y), (target_object.configuration.pose.position.x - agent_object.configuration.pose.position.x)) + delta_alpha
-    
+
     # # chi_r (Relative course of TS (from 0 to U_r))
-    # if (target_object.configuration.velocity - agent_object.configuration.velocity >= 0): 
+    # if (target_object.configuration.velocity - agent_object.configuration.velocity >= 0):
     #     delta_chi = 0
     # elif (target_object.configuration.velocity - agent_object.configuration.velocity >= 0):
     #     delta_chi = 0
@@ -38,15 +40,15 @@ def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple
     # elif (target_object.configuration.velocity - agent_object.configuration.velocity < 0):
     #     delta_chi = 2 * math.pi
     # chi_r = math.atan2((target_object.configuration.velocity - .v), (targetship.u - self.u)) + delta_chi
-    
+
     # # beta
-    # beta = chi_r - alpha_r - math.pi 
-    
+    # beta = chi_r - alpha_r - math.pi
+
     # # DCPA and TCPA
     # dcpa = abs(round(D_r * math.sin(beta), 2))
     # tcpa = round((D_r * math.cos(beta)) / abs(U_r), 2)
     # print("DCPA:", dcpa, " TCPA:", tcpa)
-    
+
     # # Collision Risk Index (CRI)
     # cons_d = 0.8
     # cons_t = 0.2
@@ -57,7 +59,7 @@ def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple
     # elif dcpa < 1000:
     #     cri = 0.001 * (cons_d * (d_safe - dcpa) * cons_t * (t_safe - tcpa))
     # print("CRI: ", cri)
-    
+
     # return dcpa, tcpa, cri
 
     # Extract positions
@@ -108,7 +110,9 @@ def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple
         return np.inf, np.inf  # Return infinite TCPA if moving perpendicular
 
     # Compute TCPA
-    tcpa = -np.dot(p_rel, v_rel) / (np.linalg.norm(v_rel) ** 2 + 1e-6)  # Avoid division by zero
+    tcpa = -np.dot(p_rel, v_rel) / (
+        np.linalg.norm(v_rel) ** 2 + 1e-6
+    )  # Avoid division by zero
 
     # Ensure TCPA is positive (future time only)
     if tcpa < 0:
@@ -117,7 +121,9 @@ def calc_cpa(agent_object: DynamicObject, target_object: DynamicObject) -> Tuple
     # Compute DCPA
     if np.isinf(tcpa):
         # If TCPA is infinite, we compute DCPA based on the current state
-        dcpa = np.linalg.norm(p1 - p2)  # Distance between the two objects at current time
+        dcpa = np.linalg.norm(
+            p1 - p2
+        )  # Distance between the two objects at current time
     else:
         # If TCPA is valid, calculate the closest points at TCPA
         closest_p1 = p1 + v1 * tcpa

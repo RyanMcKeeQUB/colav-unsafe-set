@@ -1,4 +1,4 @@
-from colav_unsafe_set_gen.objects import (
+from colav_unsafe_set.objects import (
     DynamicObstacle,
     DynamicObject,
     DynamicObstacleWithMetrics,
@@ -7,7 +7,6 @@ from scipy.spatial.distance import euclidean
 from typing import List
 
 
-@staticmethod
 def calc_I1(
     agent_vessel: DynamicObject,
     dynamic_obstacles: List[DynamicObstacleWithMetrics],
@@ -37,7 +36,7 @@ def calc_I1(
 
     return I1
 
-@staticmethod
+
 def calc_I2(
     I1: List[DynamicObstacle],
     dynamic_obstacles: List[DynamicObstacleWithMetrics],
@@ -47,9 +46,7 @@ def calc_I2(
     I2 = []
 
     for operand_obstacle in I1:
-        if not _validate_obstacle_list_subset(
-            [operand_obstacle], dynamic_obstacles
-        ):
+        if not _validate_obstacle_list_subset([operand_obstacle], dynamic_obstacles):
             raise ValueError("Operand obstacle not in dynamic obstacles list.")
 
         for arg_obstacle in dynamic_obstacles:
@@ -77,7 +74,7 @@ def calc_I2(
 
     return I2
 
-@staticmethod
+
 def calc_I3(
     dynamic_obstacles_with_metrics: List[DynamicObstacleWithMetrics],
     dsf: float,
@@ -91,7 +88,7 @@ def calc_I3(
 
     return I3
 
-@staticmethod
+
 def _validate_obstacle_list_subset(
     dynamic_obstacle_subset: List[DynamicObstacleWithMetrics],
     dynamic_obstacle_list: List[DynamicObstacleWithMetrics],

@@ -1,8 +1,13 @@
 import sys
 import os
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from unsafe_set_gen.objects import DynamicObject, DynamicObstacle, Configuration
-from unsafe_set_gen.unsafe_set.unsafe_set import create_unsafe_set_polyshape
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from colav_unsafe_set.objects import (
+    DynamicObject,
+    DynamicObstacle,
+    Configuration,
+)
+from colav_unsafe_set import create_unsafe_set
 
 agent_vessel = DynamicObject(
     configuration=Configuration(
@@ -55,8 +60,13 @@ dynamic_obstacles = list(
 
 dsf = 1.0
 
-if __name__ == "__main__":
-    polyshape = create_unsafe_set_polyshape(
+
+def main():
+    polyshape = create_unsafe_set(
         agent_vessel=agent_vessel, dynamic_obstacles=dynamic_obstacles, dsf=dsf
     )
     print(polyshape)
+
+
+if __name__ == "__main__":
+    main()

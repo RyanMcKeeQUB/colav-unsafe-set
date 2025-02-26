@@ -1,4 +1,4 @@
-from colav_unsafe_set_gen.objects import DynamicObstacleWithMetrics
+from colav_unsafe_set.objects import DynamicObstacleWithMetrics
 from typing import List
 
 

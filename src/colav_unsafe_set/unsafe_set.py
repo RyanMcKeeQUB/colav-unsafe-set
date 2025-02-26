@@ -1,27 +1,22 @@
-from colav_unsafe_set_gen.objects import (
+from .objects import (
     DynamicObstacle,
     DynamicObject,
     DynamicObstacleWithMetrics,
 )
-from colav_unsafe_set_gen.indices_of_interest import (
-    calc_I1,
-    calc_I2,
-    calc_I3,
-    unionise_indices_of_interest
-)
-from colav_unsafe_set_gen.risk_assessment import calc_cpa
+from .indices_of_interest import *
+from .risk_assessment import calc_cpa
 from typing import List
 from scipy.spatial import ConvexHull
 import numpy as np
 
 
-@staticmethod
-def create_unsafe_set_polyshape(
+def create_unsafe_set(
     agent_vessel: DynamicObject,
     dynamic_obstacles: List[DynamicObstacle],
     dsf: float,
 ):
-    dynamic_obstacle_with_metrics = calc_dynamic_obstacles_tcpa_dcpa(
+    """create_unsafe_set"""
+    dynamic_obstacle_with_metrics = _calc_dynamic_obstacles_tcpa_dcpa(
         agent_vessel=agent_vessel, dynamic_obstacles=dynamic_obstacles
     )
     I1 = calc_I1(
@@ -29,9 +24,7 @@ def create_unsafe_set_polyshape(
         dynamic_obstacles=dynamic_obstacle_with_metrics,
         dsf=dsf,
     )
-    I2 = calc_I2(
-        I1=I1, dynamic_obstacles=dynamic_obstacle_with_metrics, dsf=dsf
-    )
+    I2 = calc_I2(I1=I1, dynamic_obstacles=dynamic_obstacle_with_metrics, dsf=dsf)
     I3 = calc_I3(
         dynamic_obstacle_with_metrics,
         dsf=dsf,
@@ -43,13 +36,13 @@ def create_unsafe_set_polyshape(
 
     return _gen_uIoI_convhull(uIoI)
 
-@staticmethod
+
 def _gen_uIoI_convhull(uIoI: List[DynamicObstacleWithMetrics]):
     """Generate the convex hull of the unionised indices of interest."""
     unsafe_set_vertices = []
     for dynamic_obstacle in uIoI:
         unsafe_set_vertices.extend(
-            generate_circle_vertices(
+            _generate_circle_vertices(
                 centroid=[
                     dynamic_obstacle.dynamic_obstacle.object.configuration.pose.position.x,
                     dynamic_obstacle.dynamic_obstacle.object.configuration.pose.position.y,
@@ -63,8 +56,8 @@ def _gen_uIoI_convhull(uIoI: List[DynamicObstacleWithMetrics]):
     hull = ConvexHull(unsafe_set_vertices)
     return hull.vertices
 
-@staticmethod
-def generate_circle_vertices(centroid, radius, num_points=10):
+
+def _generate_circle_vertices(centroid, radius, num_points=10):
     """Generate 2D circle vertices in the XY plane."""
     x_c, y_c = centroid  # Extract centroid coordinates
     theta = np.linspace(0, 2 * np.pi, num_points)  # Generate angles
@@ -78,8 +71,8 @@ def generate_circle_vertices(centroid, radius, num_points=10):
 
     return circle_vertices.tolist()  # Convert to a list of lists
 
-@staticmethod
-def calc_dynamic_obstacles_tcpa_dcpa(agent_vessel, dynamic_obstacles):
+
+def _calc_dynamic_obstacles_tcpa_dcpa(agent_vessel, dynamic_obstacles):
 
     dynamic_obstacles_with_metrics = []
     for dynamic_obstacle in dynamic_obstacles:
