@@ -1,3 +1,5 @@
-dist/
-colav_unsafe_set_gen.egg-info/
-.vscode/
+./dist/
+./colav_unsafe_set_gen.egg-info/
+./.vscode/
+**/__pycache__/
+**/.pytest_cache/
