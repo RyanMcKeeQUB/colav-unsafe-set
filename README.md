@@ -3,15 +3,13 @@
 [![PyPI - Version](https://img.shields.io/pypi/v/colav-unsafe-set.svg)](https://pypi.org/project/colav-unsafe-set)
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/colav-unsafe-set.svg)](https://pypi.org/project/colav-unsafe-set)
 <!--[![PyPI - Protobuf Version]()]-->
-This package contains python protobuf compilations for easy import as well as mock examples of each of these messages you can import via examples.
+This package contains implementation of the custom risk assesment method for motion planners called unsafe set as defined in paper [geometric motion planning in dynamic environments](). 
+The following is the high level equation which this package implements.
+
 ![image](./docs/unsafe_set_calculation.png)
 
-Message types include and their proto formatting include: 
-- [missionRequest](https://github.com/RyanMcKeeQUB/colav-unsafe-set/tree/main/src/colav_unsafe_set/missionRequest.proto)
-- [missionResponse](https://github.com/RyanMcKeeQUB/colav-unsafe-set/tree/main/src/colav_unsafe_set/missionResponse.proto)
-- [agentUpdate](https://github.com/RyanMcKeeQUB/colav-unsafe-set/tree/main/src/colav_unsafe_set/agentUpdate.proto)
-- [obstaclesUpdate](https://github.com/RyanMcKeeQUB/colav-unsafe-set/tree/main/src/colav_unsafe_set/obstaclesUpdate.proto)
-- [controllerFeedback](https://github.com/RyanMcKeeQUB/colav-unsafe-set/tree/main/src/colav_unsafe_set/controllerFeedback.proto)
+Show image of geometric unsafe set: 
+![image](./docs/unsafe_set_diagram.png)
 
 -----
 
